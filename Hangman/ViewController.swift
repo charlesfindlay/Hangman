@@ -43,6 +43,7 @@ class ViewController: UIViewController {
         hiddenWordLetter = Array(hiddenWord.characters)
         print(hiddenWordLetter)
         wordToGuessLabel.text = ""
+        pastGuesses.text = ""
         for _ in hiddenWordLetter {
             wordToGuessLabel.text = "___  \(wordToGuessLabel.text!)"
         }
@@ -65,6 +66,7 @@ class ViewController: UIViewController {
 
     
     @IBAction func userMakesAGuess(sender: AnyObject) {
+        pastGuesses.text = "\(userGuess.text!)  \(pastGuesses.text!)"
         if userGuess.text == hiddenWord {
             gameOutcome.text = "You Win!"
             gameOutcome.hidden = false
@@ -80,9 +82,6 @@ class ViewController: UIViewController {
             guessCountdown()
             userGuess.text = ""
         }
-        
-        
-        
     }
     
     func guessCountdown() {
