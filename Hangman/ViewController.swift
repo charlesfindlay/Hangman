@@ -18,7 +18,10 @@ class ViewController: UIViewController {
     
     
     let wordList = "computer"
-    var hiddenWord: String!
+    
+    
+    var hiddenWord = ""
+    var hiddenWordLetter: [Character] = []
     
     
     override func viewDidLoad() {
@@ -31,6 +34,8 @@ class ViewController: UIViewController {
     func setupGame() {
         hiddenWord = wordList
         pastGuesses.text = "Past Guesses"
+        hiddenWordLetter = Array(hiddenWord.characters)
+        print(hiddenWordLetter)
     }
     
     
