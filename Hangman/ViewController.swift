@@ -40,9 +40,10 @@ class ViewController: UIViewController {
         let unsignedRandomNumber = arc4random_uniform(UInt32(wordList.count))
         hiddenWord = wordList[Int(unsignedRandomNumber)]
         pastGuesses.text = "Past Guesses"
+        
         playerCountdown.text = String(count)
         hiddenWordLetter = Array(hiddenWord.characters)
-        print(hiddenWordLetter)
+        //print(hiddenWordLetter)
         wordToGuessLabel.text = ""
         pastGuesses.text = ""
         for _ in hiddenWordLetter {
@@ -73,7 +74,7 @@ class ViewController: UIViewController {
                 gameOutcome.text = "You Win!"
                 gameOutcome.hidden = false
             } else {
-                gameOutcome.text = "You choose poorly... You're dead. So sad."
+                gameOutcome.text = "You choose ...poorly. You're dead. So sad."
                 gameOutcome.hidden = false
                 count = 0
                 playerCountdown.text = String(count)
@@ -82,7 +83,7 @@ class ViewController: UIViewController {
             }
         }
         else if hiddenWordLetter.contains(Character(userGuess.text!)) {
-            print("Good guess, champ!")
+            //print("Good guess, champ!")
             guessedLetters.append(Character(userGuess.text!))
             displayWord(Character(userGuess.text!))
             userGuess.text = ""
@@ -98,6 +99,7 @@ class ViewController: UIViewController {
         if count == 0 {
             gameOutcome.text = "The man is dead, Jim!"
             gameOutcome.hidden = false
+            makeAGuessButton.enabled = false
         } else {
             playerCountdown.text = String(count)
         }
