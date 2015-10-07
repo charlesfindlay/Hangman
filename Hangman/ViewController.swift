@@ -55,6 +55,10 @@ class ViewController: UIViewController {
             print("You Win!")
         }
         
+        if hiddenWordLetter.contains(Character(userGuess.text!)) {
+            print("Good guess, champ!")
+        }
+        
         
     }
 
