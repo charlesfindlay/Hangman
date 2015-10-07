@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var userGuess: UITextField!
     @IBOutlet weak var pastGuesses: UILabel!
     
+    @IBOutlet weak var makeAGuessButton: UIButton!
     @IBOutlet weak var gameOutcome: UILabel!
     @IBOutlet weak var playerCountdown: UILabel!
     
@@ -67,12 +68,20 @@ class ViewController: UIViewController {
     
     @IBAction func userMakesAGuess(sender: AnyObject) {
         pastGuesses.text = "\(userGuess.text!)  \(pastGuesses.text!)"
-        if userGuess.text == hiddenWord {
-            gameOutcome.text = "You Win!"
-            gameOutcome.hidden = false
+        if userGuess.text?.characters.count > 1 {
+            if userGuess.text == hiddenWord {
+                gameOutcome.text = "You Win!"
+                gameOutcome.hidden = false
+            } else {
+                gameOutcome.text = "You choose poorly... You're dead. So sad."
+                gameOutcome.hidden = false
+                count = 0
+                playerCountdown.text = String(count)
+                makeAGuessButton.enabled = false
+                
+            }
         }
-        
-        if hiddenWordLetter.contains(Character(userGuess.text!)) {
+        else if hiddenWordLetter.contains(Character(userGuess.text!)) {
             print("Good guess, champ!")
             guessedLetters.append(Character(userGuess.text!))
             displayWord(Character(userGuess.text!))
