@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     
     var hiddenWord = ""
     var hiddenWordLetter: [Character] = []
+    var guessedLetters: [Character] = []
     
     
     override func viewDidLoad() {
@@ -36,10 +37,17 @@ class ViewController: UIViewController {
         pastGuesses.text = "Past Guesses"
         hiddenWordLetter = Array(hiddenWord.characters)
         print(hiddenWordLetter)
+        wordToGuessLabel.text = ""
+        for _ in hiddenWordLetter {
+            wordToGuessLabel.text = "___  \(wordToGuessLabel.text!)"
+        }
+        
     }
     
     
-    
+    func displayWord() {
+        
+    }
 
     
     @IBAction func userMakesAGuess(sender: AnyObject) {
