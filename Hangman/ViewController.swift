@@ -15,7 +15,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var userGuess: UITextField!
     @IBOutlet weak var pastGuesses: UILabel!
     
-    
+    @IBOutlet weak var gameOutcome: UILabel!
+    @IBOutlet weak var playerCountdown: UILabel!
     
     let wordList = "computer"
     
@@ -24,6 +25,7 @@ class ViewController: UIViewController {
     var hiddenWordLetter: [Character] = []
     var guessedLetters: [Character] = []
     
+    var count = 6
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +35,10 @@ class ViewController: UIViewController {
     
     
     func setupGame() {
+        gameOutcome.hidden = true
         hiddenWord = wordList
         pastGuesses.text = "Past Guesses"
+        playerCountdown.text = String(count)
         hiddenWordLetter = Array(hiddenWord.characters)
         print(hiddenWordLetter)
         wordToGuessLabel.text = ""
@@ -61,16 +65,31 @@ class ViewController: UIViewController {
     
     @IBAction func userMakesAGuess(sender: AnyObject) {
         if userGuess.text == hiddenWord {
-            print("You Win!")
+            gameOutcome.text = "You Win!"
+            gameOutcome.hidden = false
         }
         
         if hiddenWordLetter.contains(Character(userGuess.text!)) {
             print("Good guess, champ!")
             guessedLetters.append(Character(userGuess.text!))
             displayWord(Character(userGuess.text!))
+        } else {
+            guessedLetters.append(Character(userGuess.text!))
+            guessCountdown()
         }
         
         
+        
+    }
+    
+    func guessCountdown() {
+        count--
+        if count == 0 {
+            gameOutcome.text = "The man is dead, Jim!"
+            gameOutcome.hidden = false
+        } else {
+            playerCountdown.text = String(count)
+        }
     }
 
 }
