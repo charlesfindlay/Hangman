@@ -26,6 +26,9 @@
                                 <rect key="frame" x="112" y="348" width="96" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Make a Guess"/>
+                                <connections>
+                                    <action selector="userMakesAGuess:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ciu-aK-2oi"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Word to Guess" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHF-5i-5Dl">
                                 <rect key="frame" x="104" y="147" width="113" height="21"/>
@@ -45,6 +48,11 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="pastGuesses" destination="h0X-aE-ch3" id="TX0-eG-v1V"/>
+                        <outlet property="userGuess" destination="NJ7-Iu-UH3" id="PpL-9M-o8o"/>
+                        <outlet property="wordToGuessLabel" destination="DHF-5i-5Dl" id="mbv-AP-kHQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
