@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var gameOutcome: UILabel!
     @IBOutlet weak var playerCountdown: UILabel!
     
-    let wordList = "computer"
+    let wordList = ["computer", "winsome", "felicity", "hack", "caffeine", "marvelous", "successful", "vampire", "kraken"]
     
     
     var hiddenWord = ""
@@ -36,7 +36,8 @@ class ViewController: UIViewController {
     
     func setupGame() {
         gameOutcome.hidden = true
-        hiddenWord = wordList
+        let unsignedRandomNumber = arc4random_uniform(UInt32(wordList.count))
+        hiddenWord = wordList[Int(unsignedRandomNumber)]
         pastGuesses.text = "Past Guesses"
         playerCountdown.text = String(count)
         hiddenWordLetter = Array(hiddenWord.characters)
@@ -73,9 +74,11 @@ class ViewController: UIViewController {
             print("Good guess, champ!")
             guessedLetters.append(Character(userGuess.text!))
             displayWord(Character(userGuess.text!))
+            userGuess.text = ""
         } else {
             guessedLetters.append(Character(userGuess.text!))
             guessCountdown()
+            userGuess.text = ""
         }
         
         
